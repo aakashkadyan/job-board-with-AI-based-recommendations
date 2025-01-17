@@ -6,26 +6,26 @@ Here’s a detailed breakdown of the *requirements* and *user stories* for the *
 
 ## *1. Detailed Requirements*
 
-### *Functional Requirements* (Sprint - 2 weeks -Till 31st Jan)
+### *Functional Requirements* (Sprint - 2 weeks -Till 31st Jan, Including Backend Part)
 
-1. *Job Posting and Management (for Employers)*  
+1. *Job Posting and Management (for Employers) - (Till - 25th Jan)*  
    - Employers should be able to:
-     - Create an account and log in.
-     - Post new jobs by specifying job title, description, required skills, and location.
-     - View, edit, and delete their posted jobs.
-     - Manage applications received for their posted jobs.
+     - Create an account and log in. - Yes
+     - Post new jobs by specifying job title, description, required skills, and location. - Yes
+     - View, edit, and delete their posted jobs. - Yes
+     - Manage applications received for their posted jobs.(Dont know how it will manage, not included NO for now)
 
-2. *Job Search and Application (for Job Seekers)*  
+2. *Job Search and Application (for Job Seekers) (Till - 31st Jan)*  
    - Job seekers should be able to:
-     - Create an account and log in.
-     - Search for jobs using filters such as:
+     - Create an account and log in. - Yes
+     - Search for jobs using filters such as: - Yes
        - Keywords (job title, company name)
-       - Location
-       - Required skills
-       - Salary range
-     - Apply to jobs by submitting a resume and optional cover letter.
-     - View and manage their past applications.
-     - Bookmark jobs for later review.
+       - Location - Yes
+       - Required skills - Yes
+       - Salary range -  No
+     - Apply to jobs by submitting a resume and optional cover letter. - Yes
+     - View and manage their past applications. - No
+     - Bookmark jobs for later review. - No 
 
 3. *AI-Based Job Recommendations*  
    - The system should:
