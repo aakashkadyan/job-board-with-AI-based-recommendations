@@ -445,7 +445,7 @@ body {
 }
 
 .welcome-text {
-    color: #333;
+    color: white;
     font-size: 0.9rem;
     margin-right: 1rem;
 }
@@ -589,4 +589,9 @@ body {
     .recommendations-grid {
         grid-template-columns: 1fr;
     }
+}
+
+#welcomeUser {
+    color: white;
+    font-weight: 500;
 } 

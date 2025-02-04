@@ -33,6 +33,12 @@
     gap: 0.5rem;
 }
 
+.profile-info #userName {
+    color: #2c3e50;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
 .edit-profile-btn {
     color: #2c3e50;
     text-decoration: none;
