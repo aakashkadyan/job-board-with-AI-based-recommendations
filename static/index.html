@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Board - Home</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <!-- Include Header -->
+    <div id="header-placeholder"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="welcome-section">
+            <h1>Welcome to Job Board</h1>
+            <p>Find your dream job or the perfect candidate with our AI-powered matching system.</p>
+        </div>
+
+        <!-- Public content -->
+        <div id="public-content">
+            <div class="features">
+                <div class="feature-card">
+                    <h3>For Job Seekers</h3>
+                    <p>Discover opportunities that match your skills and aspirations with AI-powered recommendations.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>For Employers</h3>
+                    <p>Find the perfect candidates for your positions using our advanced matching system.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>AI-Powered</h3>
+                    <p>Our intelligent system learns from your preferences to provide better matches over time.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard content (shown after login) -->
+        <div id="dashboard-content">
+            <div class="tabs-container">
+                <div class="tabs">
+                    <button class="tab active" onclick="switchTab('jobseeker', event)">Job Seeker</button>
+                    <button class="tab" onclick="switchTab('employer', event)">Employer</button>
+                </div>
+
+                <div class="tab-content active" id="jobseeker">
+                    <h2>Job Seeker Dashboard</h2>
+                    <p>Find your dream job with AI-powered recommendations.</p>
+                    <div class="action-buttons">
+                        <a href="/jobs" class="btn primary">Browse Jobs</a>
+                        <a href="/profile" class="btn secondary">Update Profile</a>
+                    </div>
+                    <div class="ai-recommendations">
+                        <h3>AI Recommendations</h3>
+                        <p>Based on your skills and preferences, we recommend:</p>
+                        <ul id="jobSeekerRecommendations">
+                            <li>Senior Software Developer at Tech Corp</li>
+                            <li>Full Stack Engineer at StartUp Inc</li>
+                            <li>Backend Developer at Innovation Labs</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="employer">
+                    <h2>Employer Dashboard</h2>
+                    <p>Find the perfect candidates for your positions.</p>
+                    <div class="action-buttons">
+                        <a href="/post-job" class="btn primary">Post a Job</a>
+                        <a href="/candidates" class="btn secondary">Browse Candidates</a>
+                    </div>
+                    <div class="ai-recommendations">
+                        <h3>AI Recommendations</h3>
+                        <p>Based on your job postings, we recommend these candidates:</p>
+                        <ul id="employerRecommendations">
+                            <li>John Doe - 5 years experience in React</li>
+                            <li>Jane Smith - Expert in Python Development</li>
+                            <li>Mike Johnson - Full Stack Developer</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Include Footer -->
+    <div id="footer-placeholder"></div>
+
+    <script src="/js/main.js"></script>
+    <script>
+        // Load header and footer
+        fetch('/components/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            });
+
+        fetch('/components/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+</body>
+</html>
