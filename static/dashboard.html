@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Seeker Dashboard - Job Board</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <!-- Include Header -->
+    <div id="header-placeholder"></div>
+
+    <!-- Dashboard Content -->
+    <main class="main-content dashboard">
+        <div class="dashboard-header">
+            <h1>Job Seeker Dashboard</h1>
+            <div class="user-profile-summary">
+                <img src="/images/default-avatar.png" alt="Profile" class="profile-pic">
+                <div class="profile-info">
+                    <span id="userName">Loading...</span>
+                    <a href="/profile" class="edit-profile-btn">Edit Profile</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Left Sidebar -->
+            <aside class="dashboard-sidebar">
+                <nav class="dashboard-nav">
+                    <a href="#search-jobs" class="nav-item active" onclick="switchTab('search-jobs', event)">
+                        <i class="icon-search"></i>Search Jobs
+                    </a>
+                    <a href="#apply-jobs" class="nav-item" onclick="switchTab('apply-jobs', event)">
+                        <i class="icon-apply"></i>Apply for Jobs
+                    </a>
+                    <a href="#past-applications" class="nav-item" onclick="switchTab('past-applications', event)">
+                        <i class="icon-history"></i>Past Applications
+                    </a>
+                    <a href="#recommendations" class="nav-item" onclick="switchTab('recommendations', event)">
+                        <i class="icon-star"></i>Job Recommendations
+                    </a>
+                    <a href="#saved-jobs" class="nav-item" onclick="switchTab('saved-jobs', event)">
+                        <i class="icon-bookmark"></i>Saved Jobs
+                    </a>
+                </nav>
+            </aside>
+
+            <!-- Main Content Area -->
+            <div class="dashboard-main">
+                <!-- Search Jobs Tab -->
+                <div class="tab-content active" id="search-jobs">
+                    <div class="content-header">
+                        <h2>Search Jobs</h2>
+                        <div class="search-container">
+                            <input type="text" id="job-search" placeholder="Search by title, skills, or company">
+                            <select id="job-location">
+                                <option value="">All Locations</option>
+                                <option value="remote">Remote</option>
+                                <option value="onsite">On-site</option>
+                                <option value="hybrid">Hybrid</option>
+                            </select>
+                            <button class="btn primary" onclick="searchJobs()">Search</button>
+                        </div>
+                    </div>
+                    <div id="search-results" class="job-listings">
+                        <!-- Job listings will be populated here -->
+                    </div>
+                </div>
+
+                <!-- Apply for Jobs Tab -->
+                <div class="tab-content" id="apply-jobs">
+                    <div class="content-header">
+                        <h2>Apply for Jobs</h2>
+                    </div>
+                    <div class="job-applications">
+                        <div class="recommended-jobs">
+                            <h3>Recommended for You</h3>
+                            <div class="job-cards">
+                                <!-- Job cards will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Past Applications Tab -->
+                <div class="tab-content" id="past-applications">
+                    <div class="content-header">
+                        <h2>Your Applications</h2>
+                        <div class="filter-section">
+                            <select id="status-filter" onchange="filterApplications()">
+                                <option value="all">All Status</option>
+                                <option value="pending">Pending</option>
+                                <option value="reviewed">Reviewed</option>
+                                <option value="interviewed">Interviewed</option>
+                                <option value="accepted">Accepted</option>
+                                <option value="rejected">Rejected</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="applications-container" class="applications-grid">
+                        <!-- Past applications will be populated here -->
+                    </div>
+                </div>
+
+                <!-- Job Recommendations Tab -->
+                <div class="tab-content" id="recommendations">
+                    <div class="content-header">
+                        <h2>Personalized Job Recommendations</h2>
+                    </div>
+                    <div class="recommendations-container">
+                        <div class="skills-match-section">
+                            <h3>Based on Your Skills</h3>
+                            <div id="skills-recommendations" class="recommendations-grid">
+                                <!-- Skills-based recommendations will be populated here -->
+                            </div>
+                        </div>
+                        <div class="preferences-match-section">
+                            <h3>Based on Your Preferences</h3>
+                            <div id="preferences-recommendations" class="recommendations-grid">
+                                <!-- Preference-based recommendations will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Saved Jobs Tab -->
+                <div class="tab-content" id="saved-jobs">
+                    <div class="content-header">
+                        <h2>Saved Jobs</h2>
+                    </div>
+                    <div id="saved-jobs-container" class="saved-jobs-grid">
+                        <!-- Saved jobs will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Include Footer -->
+    <div id="footer-placeholder"></div>
+
+    <script src="/js/dashboard.js"></script>
+    <script>
+        // Load header and footer
+        fetch('/components/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            });
+
+        fetch('/components/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+</body>
+</html> 

@@ -12,9 +12,13 @@
             <a href="/companies" class="nav-link">Companies</a>
             <a href="/about" class="nav-link">About</a>
         </div>
-        <div class="auth-buttons">
+        <div id="auth-section" class="auth-buttons">
             <a href="/login" class="auth-button">Login</a>
             <a href="/signup" class="auth-button">Sign Up</a>
+        </div>
+        <div id="user-section" class="user-section" style="display: none;">
+            <span id="welcomeUser" class="welcome-text"></span>
+            <button onclick="logout()" class="auth-button">Logout</button>
         </div>
     </nav>
 </header> 

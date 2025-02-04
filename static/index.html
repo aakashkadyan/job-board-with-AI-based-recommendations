@@ -39,43 +39,79 @@
         <div id="dashboard-content">
             <div class="tabs-container">
                 <div class="tabs">
-                    <button class="tab active" onclick="switchTab('jobseeker', event)">Job Seeker</button>
-                    <button class="tab" onclick="switchTab('employer', event)">Employer</button>
+                    <button class="tab active" onclick="switchTab('search-jobs', event)">Search Jobs</button>
+                    <button class="tab" onclick="switchTab('apply-jobs', event)">Apply for Jobs</button>
+                    <button class="tab" onclick="switchTab('past-applications', event)">Past Applications</button>
+                    <button class="tab" onclick="switchTab('recommendations', event)">Job Recommendations</button>
                 </div>
 
-                <div class="tab-content active" id="jobseeker">
-                    <h2>Job Seeker Dashboard</h2>
-                    <p>Find your dream job with AI-powered recommendations.</p>
-                    <div class="action-buttons">
-                        <a href="/jobs" class="btn primary">Browse Jobs</a>
-                        <a href="/profile" class="btn secondary">Update Profile</a>
+                <!-- Search Jobs Tab -->
+                <div class="tab-content active" id="search-jobs">
+                    <h2>Search Jobs</h2>
+                    <div class="search-container">
+                        <input type="text" id="job-search" placeholder="Search by title, skills, or company">
+                        <select id="job-location">
+                            <option value="">All Locations</option>
+                            <option value="remote">Remote</option>
+                            <option value="onsite">On-site</option>
+                            <option value="hybrid">Hybrid</option>
+                        </select>
+                        <button class="btn primary" onclick="searchJobs()">Search</button>
                     </div>
-                    <div class="ai-recommendations">
-                        <h3>AI Recommendations</h3>
-                        <p>Based on your skills and preferences, we recommend:</p>
-                        <ul id="jobSeekerRecommendations">
-                            <li>Senior Software Developer at Tech Corp</li>
-                            <li>Full Stack Engineer at StartUp Inc</li>
-                            <li>Backend Developer at Innovation Labs</li>
-                        </ul>
+                    <div id="search-results" class="job-listings">
+                        <!-- Job listings will be populated here -->
                     </div>
                 </div>
 
-                <div class="tab-content" id="employer">
-                    <h2>Employer Dashboard</h2>
-                    <p>Find the perfect candidates for your positions.</p>
-                    <div class="action-buttons">
-                        <a href="/post-job" class="btn primary">Post a Job</a>
-                        <a href="/candidates" class="btn secondary">Browse Candidates</a>
+                <!-- Apply for Jobs Tab -->
+                <div class="tab-content" id="apply-jobs">
+                    <h2>Apply for Jobs</h2>
+                    <div class="job-applications">
+                        <div class="recommended-jobs">
+                            <h3>Recommended for You</h3>
+                            <div class="job-cards">
+                                <!-- Job cards will be populated here -->
+                            </div>
+                        </div>
                     </div>
-                    <div class="ai-recommendations">
-                        <h3>AI Recommendations</h3>
-                        <p>Based on your job postings, we recommend these candidates:</p>
-                        <ul id="employerRecommendations">
-                            <li>John Doe - 5 years experience in React</li>
-                            <li>Jane Smith - Expert in Python Development</li>
-                            <li>Mike Johnson - Full Stack Developer</li>
-                        </ul>
+                </div>
+
+                <!-- Past Applications Tab -->
+                <div class="tab-content" id="past-applications">
+                    <h2>Your Applications</h2>
+                    <div class="applications-list">
+                        <div class="filter-section">
+                            <select id="status-filter">
+                                <option value="all">All Status</option>
+                                <option value="pending">Pending</option>
+                                <option value="reviewed">Reviewed</option>
+                                <option value="interviewed">Interviewed</option>
+                                <option value="accepted">Accepted</option>
+                                <option value="rejected">Rejected</option>
+                            </select>
+                        </div>
+                        <div id="applications-container">
+                            <!-- Past applications will be populated here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job Recommendations Tab -->
+                <div class="tab-content" id="recommendations">
+                    <h2>Personalized Job Recommendations</h2>
+                    <div class="recommendations-container">
+                        <div class="skills-match-section">
+                            <h3>Based on Your Skills</h3>
+                            <div id="skills-recommendations" class="recommendations-grid">
+                                <!-- Skills-based recommendations will be populated here -->
+                            </div>
+                        </div>
+                        <div class="preferences-match-section">
+                            <h3>Based on Your Preferences</h3>
+                            <div id="preferences-recommendations" class="recommendations-grid">
+                                <!-- Preference-based recommendations will be populated here -->
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
