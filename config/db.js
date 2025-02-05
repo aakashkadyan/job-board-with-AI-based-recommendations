@@ -3,12 +3,10 @@ const mongoose = require("mongoose");
 const connectWithRetry = async (retries = 5, delay = 5000) => {
   for (let i = 0; i < retries; i++) {
     try {
-      const conn = await mongoose.connect(process.env.MONGO_URI, {
+      const conn = await mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/job_board', {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         serverSelectionTimeoutMS: 5000,
-        socketTimeoutMS: 45000,
-        connectTimeoutMS: 10000,
         family: 4 // Use IPv4, skip trying IPv6
       });
 
@@ -43,7 +41,7 @@ const connectWithRetry = async (retries = 5, delay = 5000) => {
       if (i === retries - 1) {
         // Last retry attempt failed
         console.error('All connection attempts failed. Please check if MongoDB is running.');
-        console.error('Connection string:', process.env.MONGO_URI);
+        console.error('Connection string:', process.env.MONGO_URI || 'mongodb://localhost:27017/job_board');
         throw error;
       }
       

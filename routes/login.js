@@ -5,7 +5,7 @@ const User = require('../models/User');
 const loginRouter = express.Router();
 
 // JWT Secret Key (should be in environment variables in production)
-const JWT_SECRET = 'your-secret-key'; // In production, use process.env.JWT_SECRET
+const JWT_SECRET = 'aakash@#$%kadiyan@#*&'; // In production, use process.env.JWT_SECRET
 
 // GET route to serve the login form
 loginRouter.get('/login', (req, res) => {

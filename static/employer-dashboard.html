@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employer Dashboard - Job Board</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <!-- Include Header -->
+    <div id="header-placeholder"></div>
+
+    <!-- Dashboard Content -->
+    <main class="main-content dashboard">
+        <div class="dashboard-header">
+            <h1>Employer Dashboard</h1>
+            <div class="user-profile-summary">
+                <img src="/images/default-avatar.png" alt="Company Profile" class="profile-pic">
+                <div class="profile-info">
+                    <span id="companyName">Loading...</span>
+                    <a href="/company-profile" class="edit-profile-btn">Edit Company Profile</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Left Sidebar -->
+            <aside class="dashboard-sidebar">
+                <nav class="dashboard-nav">
+                    <a href="#post-job" class="nav-item active" onclick="switchTab('post-job', event)">
+                        <i class="icon-post"></i>Post a Job
+                    </a>
+                    <a href="#manage-jobs" class="nav-item" onclick="switchTab('manage-jobs', event)">
+                        <i class="icon-manage"></i>Manage Jobs
+                    </a>
+                    <a href="#applications" class="nav-item" onclick="switchTab('applications', event)">
+                        <i class="icon-applications"></i>Manage Applications
+                    </a>
+                    <a href="#analytics" class="nav-item" onclick="switchTab('analytics', event)">
+                        <i class="icon-analytics"></i>Job Analytics
+                    </a>
+                </nav>
+            </aside>
+
+            <!-- Main Content Area -->
+            <div class="dashboard-main">
+                <!-- Post Job Tab -->
+                <div class="tab-content active" id="post-job">
+                    <div class="content-header">
+                        <h2>Post a New Job</h2>
+                    </div>
+                    <form id="job-post-form" class="job-form" onsubmit="postJob(event)">
+                        <div class="form-group">
+                            <label for="job-title">Job Title*</label>
+                            <input type="text" id="job-title" required placeholder="e.g., Senior Software Engineer">
+                        </div>
+                        <div class="form-group">
+                            <label for="job-type">Job Type*</label>
+                            <select id="job-type" required>
+                                <option value="full-time">Full Time</option>
+                                <option value="part-time">Part Time</option>
+                                <option value="contract">Contract</option>
+                                <option value="internship">Internship</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="job-location">Location*</label>
+                            <select id="job-location" required>
+                                <option value="remote">Remote</option>
+                                <option value="onsite">On-site</option>
+                                <option value="hybrid">Hybrid</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="job-description">Job Description*</label>
+                            <textarea id="job-description" required rows="6" placeholder="Describe the role, responsibilities, and requirements"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="required-skills">Required Skills*</label>
+                            <input type="text" id="required-skills" required placeholder="e.g., JavaScript, React, Node.js">
+                        </div>
+                        <div class="form-group">
+                            <label for="salary-range">Salary Range</label>
+                            <div class="salary-inputs">
+                                <input type="number" id="salary-min" placeholder="Min">
+                                <span>to</span>
+                                <input type="number" id="salary-max" placeholder="Max">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn primary">Post Job</button>
+                    </form>
+                </div>
+
+                <!-- Manage Jobs Tab -->
+                <div class="tab-content" id="manage-jobs">
+                    <div class="content-header">
+                        <h2>Manage Posted Jobs</h2>
+                        <div class="filter-section">
+                            <select id="jobs-filter" onchange="filterJobs()">
+                                <option value="all">All Jobs</option>
+                                <option value="active">Active</option>
+                                <option value="closed">Closed</option>
+                                <option value="draft">Draft</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="jobs-container" class="jobs-grid">
+                        <!-- Jobs will be populated here -->
+                    </div>
+                </div>
+
+                <!-- Applications Tab -->
+                <div class="tab-content" id="applications">
+                    <div class="content-header">
+                        <h2>Manage Applications</h2>
+                        <div class="applications-filters">
+                            <select id="job-filter">
+                                <option value="all">All Jobs</option>
+                                <!-- Job titles will be populated here -->
+                            </select>
+                            <select id="status-filter">
+                                <option value="all">All Status</option>
+                                <option value="new">New</option>
+                                <option value="reviewed">Reviewed</option>
+                                <option value="shortlisted">Shortlisted</option>
+                                <option value="interviewed">Interviewed</option>
+                                <option value="offered">Offered</option>
+                                <option value="rejected">Rejected</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="applications-container" class="applications-table">
+                        <!-- Applications will be populated here -->
+                    </div>
+                </div>
+
+                <!-- Analytics Tab -->
+                <div class="tab-content" id="analytics">
+                    <div class="content-header">
+                        <h2>Job Analytics</h2>
+                    </div>
+                    <div class="analytics-grid">
+                        <div class="analytics-card">
+                            <h3>Total Applications</h3>
+                            <div id="total-applications" class="analytics-number">0</div>
+                        </div>
+                        <div class="analytics-card">
+                            <h3>Active Jobs</h3>
+                            <div id="active-jobs" class="analytics-number">0</div>
+                        </div>
+                        <div class="analytics-card">
+                            <h3>Conversion Rate</h3>
+                            <div id="conversion-rate" class="analytics-number">0%</div>
+                        </div>
+                    </div>
+                    <div class="analytics-charts">
+                        <div class="chart-container">
+                            <h3>Applications by Job</h3>
+                            <canvas id="applications-chart"></canvas>
+                        </div>
+                        <div class="chart-container">
+                            <h3>Application Status Distribution</h3>
+                            <canvas id="status-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Include Footer -->
+    <div id="footer-placeholder"></div>
+
+    <script src="/js/employer-dashboard.js"></script>
+    <script>
+        // Load header and footer
+        fetch('/components/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            });
+
+        fetch('/components/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+</body>
+</html> 
