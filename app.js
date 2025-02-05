@@ -45,6 +45,10 @@ const startServer = async () => {
       res.sendFile(path.join(__dirname, 'static', 'signup.html'));
     });
 
+    app.get('/about', (req, res) => {
+      res.sendFile(path.join(__dirname, 'static', 'about.html'));
+    });
+
     // Protected routes
     app.get('/jobs', verifyToken, (req, res) => {
       res.sendFile(path.join(__dirname, 'static', 'jobs.html'));

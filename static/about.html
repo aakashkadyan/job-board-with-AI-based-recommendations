@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Job Board</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        .about-section {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .about-section h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .about-section p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .mission-vision {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .mission-vision div {
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .mission-vision h2 {
+            color: #3498db;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        @media (max-width: 768px) {
+            .mission-vision {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Include Header -->
+    <div id="header-placeholder"></div>
+
+    <main class="main-content">
+        <div class="about-section">
+            <h1>About Job Board</h1>
+            <p>
+                Welcome to Job Board, your premier destination for connecting talent with opportunity. 
+                Founded with a vision to revolutionize the hiring process, we leverage cutting-edge AI technology 
+                to create perfect matches between job seekers and employers. Our platform goes beyond traditional 
+                job listings by providing personalized recommendations, skill-based matching, and a seamless 
+                application process. Whether you're a job seeker looking for your next career move or an employer 
+                seeking top talent, Job Board is your trusted partner in the modern hiring landscape.
+            </p>
+            <div class="mission-vision">
+                <div class="mission">
+                    <h2>Our Mission</h2>
+                    <p>To empower careers and businesses by creating meaningful connections through innovative technology and personalized job matching.</p>
+                </div>
+                <div class="vision">
+                    <h2>Our Vision</h2>
+                    <p>To be the world's leading AI-powered job platform, transforming how people find jobs and companies discover talent.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Include Footer -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Load header and footer
+        fetch('/components/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            });
+
+        fetch('/components/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+</body>
+</html> 
