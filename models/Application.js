@@ -25,7 +25,7 @@ const applicationSchema = new mongoose.Schema({
     enum: ['pending', 'reviewed', 'accepted', 'rejected'],
     default: 'pending'
   },
-  appliedAt: {
+  createdAt: {
     type: Date,
     default: Date.now
   },

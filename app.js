@@ -6,6 +6,8 @@ const User = require("./models/User");
 const path = require('path');
 const { loginRouter, verifyToken } = require("./routes/login");
 const signUpRouter = require("./routes/signup");
+const jobRoute = require("./routes/jobRoute");
+const applicationRoute = require("./routes/applicationRoute");
 //const taskRoutes = require("./routes/taskRoutes");
 
 dotenv.config();
@@ -49,10 +51,16 @@ const startServer = async () => {
       res.sendFile(path.join(__dirname, 'static', 'about.html'));
     });
 
-    // Protected routes
+    //Protected routes
     app.get('/jobs', verifyToken, (req, res) => {
       res.sendFile(path.join(__dirname, 'static', 'jobs.html'));
     });
+
+    app.use('/api/jobs', jobRoute);
+    app.use('/api/applications', applicationRoute);
+
+
+    //app.use(verifyToken, jobsRouter);
 
     app.get('/profile', verifyToken, (req, res) => {
       res.sendFile(path.join(__dirname, 'static', 'profile.html'));
