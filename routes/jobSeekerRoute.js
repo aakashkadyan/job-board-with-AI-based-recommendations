@@ -25,7 +25,7 @@ JobSeekerRoute.post('/', async (req, res) => {
     });
 
     await newProfile.save();
-    res.status(201).json(newProfile);
+    res.status(201).json({ message: "Your Profile is Created at this Job Board!!" });
   } catch (error) {
     res.status(500).json({ message: 'Server error', error: error.message });
   }

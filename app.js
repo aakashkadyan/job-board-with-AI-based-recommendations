@@ -9,8 +9,7 @@ const signUpRouter = require("./routes/signup");
 const jobRoute = require("./routes/jobRoute");
 const applicationRoute = require("./routes/applicationRoute");
 const recommendationRoute = require("./routes/recommendationRoute");
-//const taskRoutes = require("./routes/taskRoutes");
-
+const JobSeekerRoute = require("./routes/jobSeekerRoute")
 dotenv.config();
 
 // Initialize app
@@ -53,13 +52,14 @@ const startServer = async () => {
     });
 
     //Protected routes
-    app.get('/jobs', verifyToken, (req, res) => {
-      res.sendFile(path.join(__dirname, 'static', 'jobs.html'));
-    });
+    // app.get('/jobs', verifyToken, (req, res) => {
+    //   res.sendFile(path.join(__dirname, 'static', 'jobs.html'));
+    // });
 
     app.use('/api/jobs', jobRoute);
     app.use('/api/applications', applicationRoute);
     app.use('/api/recommendation', recommendationRoute);
+    app.use('/api/jobseekers', JobSeekerRoute);
 
 
     //app.use(verifyToken, jobsRouter);
